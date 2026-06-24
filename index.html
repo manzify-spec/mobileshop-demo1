@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AURUM — Kochi's Smartphone Atelier | Phones, Accessories & Care</title>
+<meta name="description" content="AURUM is Kochi's smartphone atelier on Marine Drive — a considered space for choosing your next phone. Every brand, genuine accessories, expert care, easy EMI and exchange. Visit us or message on WhatsApp." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --espresso:#15100B;
+    --espresso-2:#1E1711;
+    --espresso-3:#241C14;
+    --ivory:#F2E9DA;
+    --ivory-dim:#B7AB97;
+    --line:rgba(242,233,218,.12);
+    --line-strong:rgba(242,233,218,.22);
+    --gold:#C9A24B;
+    --gold-soft:#E6CB86;
+    --emerald:#5FA088;
+    --wa:#25D366;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--espresso);color:var(--ivory);
+    font-family:"Hanken Grotesk",system-ui,sans-serif;line-height:1.65;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;position:relative;
+  }
+  /* subtle film grain */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* inset gold gallery frame */
+  .frameline{position:fixed;inset:14px;border:1px solid rgba(201,162,75,.32);pointer-events:none;z-index:55;border-radius:3px}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  section{position:relative;z-index:2}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+
+  h1,h2,h3{font-family:"Fraunces",serif;font-weight:500;line-height:1.04;letter-spacing:-.012em}
+  .serif-it{font-style:italic;font-weight:400}
+  .eyebrow{font-family:"Hanken Grotesk";font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .gold{color:var(--gold)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14px;letter-spacing:.02em;
+    padding:14px 26px;border-radius:2px;cursor:pointer;border:1px solid transparent;
+    transition:transform .25s var(--ease),background .25s,color .25s,border-color .25s;
+    font-family:"Hanken Grotesk";white-space:nowrap;
+  }
+  .btn svg{width:17px;height:17px}
+  .btn-gold{background:var(--gold);color:#1a1206;border-color:var(--gold)}
+  .btn-gold:hover{background:var(--gold-soft);border-color:var(--gold-soft);transform:translateY(-2px)}
+  .btn-outline{background:transparent;border-color:var(--line-strong);color:var(--ivory)}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+  /* ---------- top bar ---------- */
+  .topbar{border-bottom:1px solid var(--line);font-family:"Hanken Grotesk";font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ivory-dim)}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:42px}
+  .topbar .sep{color:var(--gold)}
+
+  /* ---------- nav ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(21,16,11,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:82px}
+  .brand{font-family:"Fraunces",serif;font-weight:500;font-size:30px;letter-spacing:.18em;color:var(--ivory)}
+  .brand .dot{color:var(--gold)}
+  .nav-links{display:flex;align-items:center;gap:38px}
+  .nav-links a{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-dim);font-weight:500;transition:color .25s;position:relative}
+  .nav-links a:hover{color:var(--ivory)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease)}
+  .nav-links a:hover::after{width:100%}
+  .burger{display:none;background:none;border:1px solid var(--line-strong);border-radius:2px;padding:9px;cursor:pointer}
+  .burger span{display:block;width:20px;height:1.5px;background:var(--ivory);margin:4.5px 0}
+  .mobile-menu{display:none}
+
+  /* ---------- hero ---------- */
+  .hero{padding:90px 0 100px}
+  .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:60px;align-items:center}
+  .hero h1{font-size:clamp(50px,7.4vw,104px);font-weight:500;margin:26px 0 0}
+  .hero h1 .l2{display:block;color:var(--gold)}
+  .hero .lead{font-size:18px;color:var(--ivory-dim);max-width:430px;margin:30px 0 38px;line-height:1.7}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+  .hero-visual{position:relative}
+  .hero-img{position:relative;aspect-ratio:4/5.1;overflow:hidden;border-radius:3px;border:1px solid var(--line-strong)}
+  .hero-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.02)}
+  .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(21,16,11,.5))}
+  .hero-cap{position:absolute;bottom:18px;left:18px;font-family:"Fraunces";font-style:italic;font-size:15px;color:var(--ivory)}
+  .hero-cap .y{display:block;font-family:"Hanken Grotesk";font-style:normal;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+  .hero-est{position:absolute;top:-14px;right:-14px;width:96px;height:96px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;text-align:center;background:var(--espresso);transform:rotate(-8deg)}
+  .hero-est .b{font-family:"Fraunces";font-size:26px;color:var(--gold);line-height:1}
+  .hero-est .s{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ivory-dim);margin-top:3px}
+
+  /* ---------- brand line ---------- */
+  .brandline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0}
+  .brandline .wrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 44px}
+  .brandline span{font-family:"Fraunces";font-size:22px;color:var(--ivory-dim);transition:color .3s}
+  .brandline span:hover{color:var(--gold)}
+
+  /* ---------- manifesto ---------- */
+  .manifesto{padding:110px 0;text-align:center}
+  .manifesto p{font-family:"Fraunces";font-weight:400;font-size:clamp(26px,3.6vw,42px);line-height:1.34;max-width:880px;margin:0 auto;color:var(--ivory)}
+  .manifesto .em{font-style:italic;color:var(--gold)}
+
+  /* ---------- section header ---------- */
+  .sec{padding:104px 0}
+  .sec-head{margin-bottom:60px;max-width:620px}
+  .sec-head.center{margin:0 auto 60px;text-align:center}
+  .sec-head h2{font-size:clamp(34px,4.6vw,58px);font-weight:500;margin:18px 0 0}
+
+  /* ---------- about ---------- */
+  .about{display:grid;grid-template-columns:1fr 1.04fr;gap:64px;align-items:center}
+  .about-media{position:relative;aspect-ratio:5/6;overflow:hidden;border-radius:3px;border:1px solid var(--line-strong)}
+  .about-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.92)}
+  .about-body .eyebrow{margin-bottom:18px;display:block}
+  .about-body h2{font-size:clamp(30px,4vw,48px);margin-bottom:24px}
+  .about-body p{color:var(--ivory-dim);font-size:16.5px;margin-bottom:18px}
+  .about-body p .drop{font-family:"Fraunces";font-size:3.4em;line-height:.8;float:left;color:var(--gold);margin:6px 12px 0 0;font-weight:500}
+  .signoff{font-family:"Fraunces";font-style:italic;font-size:19px;color:var(--ivory);margin-top:26px}
+
+  /* ---------- services menu ---------- */
+  .menu{border-top:1px solid var(--line)}
+  .menu-item{display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:baseline;padding:30px 8px;border-bottom:1px solid var(--line);transition:padding .35s var(--ease),background .35s}
+  .menu-item:hover{padding-left:24px;padding-right:0;background:linear-gradient(90deg,rgba(201,162,75,.05),transparent)}
+  .menu-item .mi-no{font-family:"Fraunces";font-style:italic;font-size:18px;color:var(--gold);width:38px}
+  .menu-item .mi-name{font-family:"Fraunces";font-size:clamp(22px,2.6vw,30px);font-weight:500;transition:color .3s}
+  .menu-item:hover .mi-name{color:var(--gold)}
+  .menu-item .mi-desc{color:var(--ivory-dim);font-size:14.5px;margin-top:6px;max-width:520px}
+  .menu-item .mi-tag{font-family:"Hanken Grotesk";font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory-dim);border:1px solid var(--line-strong);border-radius:2px;padding:6px 12px;white-space:nowrap}
+
+  /* ---------- lookbook (featured) ---------- */
+  .lookbook{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .look{position:relative}
+  .look .pic{aspect-ratio:3/4;overflow:hidden;border-radius:3px;border:1px solid var(--line-strong);margin-bottom:20px}
+  .look .pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);filter:saturate(.92)}
+  .look:hover .pic img{transform:scale(1.05)}
+  .look .kicker{font-family:"Hanken Grotesk";font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .look h3{font-family:"Fraunces";font-size:25px;font-weight:500;margin:8px 0 8px}
+  .look .spec{color:var(--ivory-dim);font-size:13.5px;letter-spacing:.04em;margin-bottom:16px}
+  .enquire{display:inline-flex;align-items:center;gap:9px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ivory);border-bottom:1px solid var(--gold);padding-bottom:4px;transition:gap .25s,color .25s}
+  .enquire:hover{gap:14px;color:var(--gold)}
+  .enquire svg{width:15px;height:15px}
+
+  /* ---------- gallery editorial ---------- */
+  .gal-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:120px;gap:16px}
+  .gal{position:relative;overflow:hidden;border-radius:3px;border:1px solid var(--line-strong)}
+  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);filter:saturate(.9)}
+  .gal:hover img{transform:scale(1.06)}
+  .gal .cap{position:absolute;left:14px;bottom:12px;font-family:"Fraunces";font-style:italic;font-size:14px;color:var(--ivory);text-shadow:0 2px 12px rgba(0,0,0,.6);opacity:0;transform:translateY(6px);transition:.35s}
+  .gal:hover .cap{opacity:1;transform:none}
+  .ga{grid-column:span 7;grid-row:span 4}
+  .gb{grid-column:span 5;grid-row:span 2}
+  .gc{grid-column:span 5;grid-row:span 2}
+  .gd{grid-column:span 4;grid-row:span 3}
+  .ge{grid-column:span 4;grid-row:span 3}
+  .gf{grid-column:span 4;grid-row:span 3}
+  .imgfb{width:100%;height:100%;display:grid;place-items:center;background:var(--espresso-3)}
+  .imgfb b{font-family:"Fraunces";font-style:italic;font-size:14px;color:var(--gold)}
+
+  /* ---------- figures / trust ---------- */
+  .figures{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .figures .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .fig{padding:56px 24px;text-align:center;border-right:1px solid var(--line)}
+  .fig:last-child{border-right:0}
+  .fig .n{font-family:"Fraunces";font-size:clamp(40px,5vw,62px);color:var(--gold);font-weight:500;line-height:1}
+  .fig .l{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ivory-dim);margin-top:12px}
+
+  /* ---------- testimonials ---------- */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .quote{border:1px solid var(--line);border-radius:3px;padding:36px 32px;background:var(--espresso-2)}
+  .quote .mk{font-family:"Fraunces";font-size:54px;color:var(--gold);line-height:.6;height:30px}
+  .quote p{font-family:"Fraunces";font-style:italic;font-size:17px;color:var(--ivory);margin:14px 0 22px;line-height:1.5}
+  .quote .who{display:flex;align-items:center;gap:13px;border-top:1px solid var(--line);padding-top:18px}
+  .quote .av{width:40px;height:40px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-family:"Fraunces";font-size:16px;flex:none}
+  .quote .nm{font-weight:600;font-size:14px;letter-spacing:.02em}
+  .quote .mt{font-size:12px;color:var(--ivory-dim);letter-spacing:.06em}
+
+  /* ---------- visit ---------- */
+  .visit{display:grid;grid-template-columns:.92fr 1.08fr;gap:44px;align-items:stretch}
+  .calling-card{border:1px solid var(--gold);border-radius:3px;padding:44px;background:var(--espresso-2);display:flex;flex-direction:column;gap:26px;position:relative}
+  .calling-card::before{content:"";position:absolute;inset:7px;border:1px solid var(--line);pointer-events:none}
+  .vc-row{display:flex;gap:18px;align-items:flex-start;position:relative}
+  .vc-row .k{font-family:"Hanken Grotesk";font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);width:84px;flex:none;padding-top:4px}
+  .vc-row .v{font-family:"Fraunces";font-size:18px;line-height:1.4}
+  .vc-row .v span{font-family:"Hanken Grotesk";font-size:14px;color:var(--ivory-dim);display:block;margin-top:2px}
+  .vc-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+  .map-box{border:1px solid var(--line-strong);border-radius:3px;overflow:hidden;min-height:460px}
+  .map-box iframe{width:100%;height:100%;min-height:460px;border:0;display:block;filter:sepia(.32) saturate(.8) brightness(.82) contrast(1.05)}
+
+  /* ---------- social ---------- */
+  .social{text-align:center;padding:96px 0;border-top:1px solid var(--line)}
+  .social h2{font-size:clamp(30px,4vw,48px);margin:16px 0 10px}
+  .social p{color:var(--ivory-dim);margin-bottom:30px}
+  .socials{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+  .soc{width:52px;height:52px;border:1px solid var(--line-strong);border-radius:50%;display:grid;place-items:center;transition:border-color .3s,transform .25s var(--ease),background .3s}
+  .soc:hover{border-color:var(--gold);transform:translateY(-3px);background:rgba(201,162,75,.08)}
+  .soc svg{width:21px;height:21px;fill:var(--ivory-dim);transition:fill .3s}
+  .soc:hover svg{fill:var(--gold)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:64px 0 36px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:48px}
+  .foot-grid .intro .brand{font-size:30px;display:inline-block;margin-bottom:16px}
+  .foot-grid .intro p{color:var(--ivory-dim);font-size:14px;max-width:300px}
+  .foot-col h4{font-family:"Hanken Grotesk";font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .foot-col a{display:block;color:var(--ivory-dim);font-size:14px;padding:6px 0;transition:color .25s}
+  .foot-col a:hover{color:var(--ivory)}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:12.5px;color:var(--ivory-dim);letter-spacing:.04em}
+  .credit a{color:var(--gold);font-weight:600}
+
+  /* ---------- floating WA ---------- */
+  .fab{position:fixed;right:26px;bottom:26px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.6);transition:transform .25s var(--ease)}
+  .fab:hover{transform:scale(1.07)}
+  .fab svg{width:30px;height:30px}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:960px){
+    .wrap{padding:0 26px}
+    .nav-links{display:none}
+    .nav .btn-gold{display:none}
+    .burger{display:block}
+    .hero-grid,.about,.visit{grid-template-columns:1fr;gap:46px}
+    .hero-visual{max-width:400px;margin:0 auto}
+    .lookbook,.quotes{grid-template-columns:1fr}
+    .figures .wrap{grid-template-columns:1fr 1fr}
+    .fig:nth-child(2){border-right:0}.fig{border-bottom:1px solid var(--line)}
+    .fig:nth-last-child(-n+2){border-bottom:0}
+    .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+    .ga,.gb,.gc,.gd,.ge,.gf{grid-column:span 1;grid-row:span 2}
+    .ga{grid-column:span 2}
+    .mobile-menu{display:flex;flex-direction:column;background:var(--espresso-2);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+    .mobile-menu.open{max-height:440px}
+    .mobile-menu a{padding:16px 26px;border-bottom:1px solid var(--line);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-dim)}
+    .mobile-menu .btn{margin:18px 26px 24px;justify-content:center}
+  }
+  @media(max-width:560px){
+    .frameline{inset:8px}
+    .lookbook,.quotes{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+    .ga{grid-column:span 1}
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+    .sec,.manifesto{padding:70px 0}
+    .calling-card{padding:32px}
+    .menu-item{grid-template-columns:auto 1fr;gap:16px}
+    .menu-item .mi-tag{display:none}
+    .topbar .wrap{justify-content:center}
+    .topbar .right{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto}
+    .reveal{opacity:1;transform:none}
+  }
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="frameline" aria-hidden="true"></div>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="wrap">
+    <span>Marine Drive · Kochi</span>
+    <span class="right">Open today 10:00 — 21:00 <span class="sep">·</span> +91 75940 11122</span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="brand">AURUM<span class="dot">.</span></a>
+    <nav class="nav-links">
+      <a href="#about">The Atelier</a>
+      <a href="#services">Services</a>
+      <a href="#featured">Collection</a>
+      <a href="#gallery">The Space</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px">
+      <a href="https://wa.me/917594011122?text=Hello%20AURUM%2C%20I%27d%20like%20to%20enquire%20about%20a%20phone." target="_blank" rel="noopener" class="btn btn-gold">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>
+        WhatsApp
+      </a>
+      <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">The Atelier</a>
+    <a href="#services">Services</a>
+    <a href="#featured">Collection</a>
+    <a href="#gallery">The Space</a>
+    <a href="#visit">Visit</a>
+    <a href="https://wa.me/917594011122" target="_blank" rel="noopener" class="btn btn-gold">Message on WhatsApp</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">Kochi's Smartphone Atelier · Est. 2009</span>
+      <h1>The phone you want,<span class="l2 serif-it">chosen beautifully.</span></h1>
+      <p class="lead">AURUM is a considered space for choosing your next phone — every brand on display, genuine accessories, and unhurried, expert advice. No queues, no pressure. Just the right device.</p>
+      <div class="hero-cta">
+        <a href="https://wa.me/917594011122?text=Hello%20AURUM%2C%20I%27m%20looking%20for%20a%20phone." target="_blank" rel="noopener" class="btn btn-gold">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>
+          Enquire on WhatsApp
+        </a>
+        <a href="tel:+917594011122" class="btn btn-outline">Call the atelier</a>
+        <a href="#visit" class="btn btn-outline">Find us</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1000&q=80" alt="Inside the AURUM atelier" data-fb="The atelier floor">
+        <div class="hero-cap">Inside the atelier<span class="y">Marine Drive, Kochi</span></div>
+      </div>
+      <div class="hero-est">
+        <div><div class="b">15</div><div class="s">Years</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND LINE ============ -->
+<div class="brandline">
+  <div class="wrap">
+    <span>Apple</span><span>Samsung</span><span>OnePlus</span><span>Google</span><span>Xiaomi</span><span>Nothing</span><span>vivo</span>
+  </div>
+</div>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto">
+  <div class="wrap">
+    <p class="reveal">A phone is the thing you hold most in a day. So choosing one shouldn't feel like a transaction — it should feel <span class="em">considered, calm, and a little bit special.</span></p>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="sec" id="about" style="padding-top:0">
+  <div class="wrap about">
+    <div class="about-media reveal">
+      <img src="https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=1000&q=80" alt="Phones presented at AURUM" data-fb="The collection">
+    </div>
+    <div class="about-body reveal">
+      <span class="eyebrow">The Atelier</span>
+      <h2>Fifteen years of getting it right.</h2>
+      <p><span class="drop">S</span>ince 2009, AURUM has been the address in Kochi for people who'd rather be advised than sold to. We're phone people first — happiest when we've matched you with the device you'll quietly love, not the one with the biggest margin.</p>
+      <p>Every phone is sealed, genuine and brand-warranted. And our in-house care bench handles screens, batteries and software the same day, so you're rarely without your phone for long.</p>
+      <div class="signoff gold">— Genuine. Warranted. Beautifully looked after.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES MENU ============ -->
+<section class="sec" id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What we offer</span>
+      <h2>Everything mobile, considered.</h2>
+    </div>
+    <div class="menu reveal">
+      <div class="menu-item">
+        <div class="mi-no">i</div>
+        <div><div class="mi-name">New smartphones</div><div class="mi-desc">Every new launch from Apple, Samsung, OnePlus and more — sealed, genuine, ready to take home.</div></div>
+        <div class="mi-tag">All brands</div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-no">ii</div>
+        <div><div class="mi-name">Genuine accessories</div><div class="mi-desc">Cases, chargers, earbuds, smartwatches and power banks — curated and entirely original.</div></div>
+        <div class="mi-tag">Curated</div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-no">iii</div>
+        <div><div class="mi-name">The care bench</div><div class="mi-desc">Screen, battery, charging-port and water-damage repairs by certified technicians — most same day.</div></div>
+        <div class="mi-tag">Same day</div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-no">iv</div>
+        <div><div class="mi-name">Easy EMI &amp; finance</div><div class="mi-desc">No-cost EMI on leading cards and instant finance, so the right phone always fits the budget.</div></div>
+        <div class="mi-tag">No-cost EMI</div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-no">v</div>
+        <div><div class="mi-name">Exchange &amp; buyback</div><div class="mi-desc">A fair, instant valuation for your old phone, applied straight toward your new one.</div></div>
+        <div class="mi-tag">Best value</div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-no">vi</div>
+        <div><div class="mi-name">Warranty &amp; protection</div><div class="mi-desc">Full brand warranty with optional screen-protection and extended-care plans.</div></div>
+        <div class="mi-tag">Peace of mind</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOOKBOOK / FEATURED ============ -->
+<section class="sec" id="featured" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">On display</span>
+      <h2 class="serif-it" style="font-style:italic">The current collection.</h2>
+    </div>
+    <div class="lookbook">
+      <div class="look reveal">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=700&q=80" alt="Pro flagship" data-fb="Flagship"></div>
+        <div class="kicker">Flagship</div>
+        <h3>The Pro line-up</h3>
+        <div class="spec">6.7&quot; OLED · 200MP · 5G · titanium</div>
+        <a href="https://wa.me/917594011122?text=Hello%20AURUM%2C%20the%20Pro%20line-up%20price%3F" target="_blank" rel="noopener" class="enquire">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="look reveal">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80" alt="Everyday phone" data-fb="Everyday"></div>
+        <div class="kicker">Everyday</div>
+        <h3>The all-rounder</h3>
+        <div class="spec">120Hz · 5000mAh · fast charge</div>
+        <a href="https://wa.me/917594011122?text=Hello%20AURUM%2C%20the%20all-rounder%20price%3F" target="_blank" rel="noopener" class="enquire">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="look reveal">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=700&q=80" alt="Foldable phone" data-fb="Foldable"></div>
+        <div class="kicker">New</div>
+        <h3>The foldable series</h3>
+        <div class="spec">Foldable · dual screen · premium</div>
+        <a href="https://wa.me/917594011122?text=Hello%20AURUM%2C%20the%20foldable%20series%20price%3F" target="_blank" rel="noopener" class="enquire">Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="sec" id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">The Space</span>
+      <h2>Inside &amp; out.</h2>
+    </div>
+    <div class="gal-grid reveal">
+      <div class="gal ga"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=80" alt="Storefront" data-fb="The storefront"><span class="cap">The storefront, Marine Drive</span></div>
+      <div class="gal gb"><img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=700&q=80" alt="Display" data-fb="On display"><span class="cap">Latest models on display</span></div>
+      <div class="gal gc"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=80" alt="Accessories" data-fb="Accessories"><span class="cap">The accessories table</span></div>
+      <div class="gal gd"><img src="https://images.unsplash.com/photo-1607936854279-55e8a4c64888?auto=format&fit=crop&w=700&q=80" alt="Care bench" data-fb="The care bench"><span class="cap">The care bench</span></div>
+      <div class="gal ge"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=700&q=80" alt="Team" data-fb="Our people"><span class="cap">Our people</span></div>
+      <div class="gal gf"><img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=700&q=80" alt="New arrivals" data-fb="New arrivals"><span class="cap">Newly arrived</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIGURES ============ -->
+<section class="figures">
+  <div class="wrap">
+    <div class="fig reveal"><div class="n">15</div><div class="l">Years on Marine Drive</div></div>
+    <div class="fig reveal"><div class="n">24k+</div><div class="l">Phones placed</div></div>
+    <div class="fig reveal"><div class="n">50+</div><div class="l">Brands on display</div></div>
+    <div class="fig reveal"><div class="n">4.9</div><div class="l">Average rating</div></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">In good company</span>
+      <h2>Words from Kochi.</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote reveal">
+        <div class="mk">&ldquo;</div>
+        <p>They took the time to understand how I actually use my phone, then matched me perfectly. No upsell, just care.</p>
+        <div class="who"><div class="av">A</div><div><div class="nm">Arjun R.</div><div class="mt">Marine Drive</div></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="mk">&ldquo;</div>
+        <p>Cracked screen repaired the same afternoon with a genuine part. Calm, honest and quietly excellent.</p>
+        <div class="who"><div class="av">F</div><div><div class="nm">Fathima N.</div><div class="mt">Ernakulam</div></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="mk">&ldquo;</div>
+        <p>The nicest phone-buying experience I've had in Kochi. It feels less like a shop and more like a proper atelier.</p>
+        <div class="who"><div class="av">S</div><div><div class="nm">Sanjay V.</div><div class="mt">Willingdon Island</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section class="sec" id="visit" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Visit the atelier</span>
+      <h2>You're warmly invited.</h2>
+    </div>
+    <div class="visit">
+      <div class="calling-card reveal">
+        <div class="vc-row"><div class="k">Address</div><div class="v">AURUM Smartphone Atelier<span>Shop 4, Marine Drive Walkway, Ernakulam,<br>Kochi, Kerala 682011</span></div></div>
+        <div class="vc-row"><div class="k">Hours</div><div class="v">Mon — Sat · 10:00 – 21:00<span>Sunday · 11:00 – 20:00</span></div></div>
+        <div class="vc-row"><div class="k">Contact</div><div class="v">+91 75940 11122<span>hello@aurummobiles.in</span></div></div>
+        <div class="vc-actions">
+          <a href="https://wa.me/917594011122?text=Hello%20AURUM%21" target="_blank" rel="noopener" class="btn btn-gold">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+917594011122" class="btn btn-outline">Call</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Marine+Drive+Ernakulam+Kochi" target="_blank" rel="noopener" class="btn btn-outline">Directions</a>
+        </div>
+      </div>
+      <div class="map-box reveal">
+        <iframe title="AURUM location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Marine%20Drive%20Ernakulam%20Kochi%20Kerala&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOCIAL ============ -->
+<section class="social">
+  <div class="wrap reveal">
+    <span class="eyebrow">Stay in touch</span>
+    <h2>Follow AURUM.</h2>
+    <p>New arrivals, care tips and quiet seasonal offers.</p>
+    <div class="socials">
+      <a class="soc" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ivory-dim)" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="var(--ivory-dim)" stroke="none"/></svg></a>
+      <a class="soc" href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+      <a class="soc" href="#" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.12-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.58A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.12 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.58a3 3 0 002.12-2.12A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5v-7l6.2 3.5z"/></svg></a>
+      <a class="soc" href="https://wa.me/917594011122" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg></a>
+      <a class="soc" href="#" target="_blank" rel="noopener" aria-label="Google reviews"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 7.1-1.01z"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="intro">
+        <a href="#home" class="brand">AURUM<span class="dot">.</span></a>
+        <p>Kochi's smartphone atelier on Marine Drive — phones, accessories, care, EMI and exchange, all in one considered space.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#about">The Atelier</a>
+        <a href="#services">Services</a>
+        <a href="#featured">Collection</a>
+        <a href="#gallery">The Space</a>
+      </div>
+      <div class="foot-col">
+        <h4>Visit &amp; contact</h4>
+        <a href="#visit">Marine Drive, Kochi</a>
+        <a href="tel:+917594011122">+91 75940 11122</a>
+        <a href="https://wa.me/917594011122" target="_blank" rel="noopener">WhatsApp us</a>
+        <a href="mailto:hello@aurummobiles.in">hello@aurummobiles.in</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AURUM Smartphone Atelier · This is a demo website.</span>
+      <span class="credit">Crafted by <a href="https://empoweraitech.in" target="_blank" rel="noopener">Empower AI Tech</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a class="fab" href="https://wa.me/917594011122?text=Hello%20AURUM%2C%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.017-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<script>
+  // mobile menu
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // graceful image fallback — no broken icons
+  document.querySelectorAll('img[data-fb]').forEach(img => {
+    img.addEventListener('error', function(){
+      const label = this.getAttribute('data-fb') || 'AURUM';
+      const fb = document.createElement('div');
+      fb.className = 'imgfb';
+      fb.innerHTML = '<b>'+label+'</b>';
+      this.replaceWith(fb);
+    }, {once:true});
+  });
+</script>
+</body>
+</html>
